@@ -9,4 +9,8 @@ export default class Earth_Planet extends Planet {
 
         return true;
     }
+
+    public async OnLife() {
+        await super.OnLife();
+    }
 }

@@ -55,4 +55,16 @@ export default abstract class Galaxy {
 
         return added;
     }
+
+    /**
+     * Life procces in the galaxy
+     */
+    public async OnLife() {
+        const lifeProcesses = [
+            this.stars.map(e => e.OnLife()),
+            this.planets.map(e => e.OnLife()),
+        ];
+        
+        await Promise.all([].concat(...lifeProcesses));
+    }
 }

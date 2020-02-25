@@ -34,4 +34,13 @@ export default abstract class Star {
         //     await item.Init();
         // }
     }
+
+    public async OnLife() {
+        if (!config.SIMULATE[this.typeName].LIFE) return;
+
+        for (let i = 0; i <= 100; i += 25) {
+            this.logger.info(`Life... ${i}%`);
+            await sleep(10);
+        }
+    }
 }

@@ -26,6 +26,12 @@ export default class Universe {
 
         await sleep(1e3);
 
+        this.logger.info('Start life');
+        await this.StartLife();
+        this.logger.info('End of life.');
+
+        await sleep(1e3);
+
         this.logger.info('The destruction of the universe has begun');
         await this.Destroy();
         this.logger.info('The universe is destroyed.');
@@ -64,6 +70,11 @@ export default class Universe {
      */
     private AddGalaxies(galaxies: Galaxy[]): Galaxy[] {
         return createAdder(this.galaxies, galaxies);
+    }
+
+    private async StartLife() {
+        const lifeProcesses = this.galaxies.map(e => e.OnLife());
+        await Promise.all(lifeProcesses);
     }
 
     /**
